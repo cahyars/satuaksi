@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --glow-cyan: 0 4px 20px -2px rgba(6, 182, 212, 0.06);
+  --glow-cyan-strong: 0 4px 30px -2px rgba(6, 182, 212, 0.15);
+
+  --color-dark-soft: #ffffff;
+  --color-dark-deep: #f8fafc;
+  --color-cyan-glow: #0891b2;
+  --color-navy-dark: #f8fafc;
+  --color-navy-light: #f1f5f9;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism custom classes for Light Mode */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.06) !important;
+}
+
+.glass-panel-glow {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.25) !important;
+  box-shadow: var(--glow-cyan-strong) !important;
+}
+
+/* Custom glow effect */
+.cyan-glow {
+  box-shadow: var(--glow-cyan);
+}
+
+.cyan-glow-strong {
+  box-shadow: var(--glow-cyan-strong);
+}
+
+/* Custom Scrollbar for Light Mode */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Real-time pulse animation */
+@keyframes dangerPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.danger-pulse {
+  animation: dangerPulse 2s infinite;
+}
+
+/* AI scanning animation */
+@keyframes scanning {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanner-line {
+  animation: scanning 3s linear infinite;
+  background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.3), transparent);
+}
+
+/* Waveform grid for Light Mode */
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+/* Custom CSS helpers for light mode overrides */
+.text-slate-light-inverted {
+  color: #0f172a !important;
+}
+
+/* Class-based theme adjustments for elements using arbitrary background hex codes */
+div.flex.min-h-screen.bg-\[\#02040a\] {
+  background-color: #f8fafc !important;
+}
+
+div.bg-\[\#02050c\] {
+  background-color: #f8fafc !important;
+  color: #0891b2 !important;
+}
+
+div.bg-\[\#03050a\] {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Scrollbar hide utility to keep layouts clean and mobile-friendly */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+
