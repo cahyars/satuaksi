@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useNotificationStore } from '@/store/useNotificationStore';
+import { getBackendAssetUrl } from '@/utils/backend';
 
 interface AdminSidebarProps {
   mobileOpen: boolean;
@@ -61,7 +62,7 @@ export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebar
       <div className="flex items-center space-x-3 p-3 bg-purple-50/50 border border-purple-100 rounded-xl mb-6">
         <div className="h-10 w-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 font-semibold border border-purple-200/40">
           {user?.avatar ? (
-            <img src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5001${user.avatar}`} alt={user?.name} className="h-full w-full object-cover rounded-lg" />
+            <img src={getBackendAssetUrl(user.avatar)} alt={user?.name} className="h-full w-full object-cover rounded-lg" />
           ) : (
             user?.name?.charAt(0)
           )}

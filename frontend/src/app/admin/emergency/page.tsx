@@ -9,6 +9,7 @@ import {
   Flame, Compass, MessageSquare
 } from 'lucide-react';
 import { useEmergencyStore } from '@/store/useEmergencyStore';
+import { getBackendAssetUrl } from '@/utils/backend';
 import toast from 'react-hot-toast';
 
 export default function AdminEmergencyPage() {
@@ -817,7 +818,7 @@ Mohon bantuan instansi untuk segera mengirimkan armada penyelamat ke lokasi ters
                       <div className="flex items-center gap-3 mb-5">
                         <div className="h-12 w-12 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden border-2 border-white shadow-sm shrink-0 ring-2 ring-red-100">
                           {alert.user?.avatar ? (
-                            <img src={alert.user.avatar.startsWith('http') ? alert.user.avatar : `http://localhost:5001${alert.user.avatar}`} alt={alert.user.name} className="h-full w-full object-cover" />
+                            <img src={getBackendAssetUrl(alert.user.avatar)} alt={alert.user.name} className="h-full w-full object-cover" />
                           ) : (
                             <User className="h-6 w-6 text-slate-400" />
                           )}

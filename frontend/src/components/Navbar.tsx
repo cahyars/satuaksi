@@ -8,6 +8,7 @@ import { useNotificationStore } from '@/store/useNotificationStore';
 import { useEmergencyStore } from '@/store/useEmergencyStore';
 import { playEmergencyAlarm, stopEmergencyAlarm, isAlarmPlaying } from '@/utils/alarmSound';
 import { getRealLocation, startContinuousTracking, stopContinuousTracking } from '@/utils/gps';
+import { getBackendAssetUrl } from '@/utils/backend';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -290,7 +291,7 @@ export default function Navbar({ setMobileOpen, hideActions }: NavbarProps) {
               <div className="h-7 w-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 text-xs font-bold border border-slate-200">
                 {user?.avatar ? (
                   <img
-                    src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5001${user.avatar}`}
+                    src={getBackendAssetUrl(user.avatar)}
                     alt="Profile"
                     className="h-full w-full object-cover rounded-full"
                   />

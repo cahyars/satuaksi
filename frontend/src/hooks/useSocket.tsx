@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { BACKEND_SOCKET_URL } from '@/utils/backend';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useReportStore } from '@/store/useReportStore';
 import { useEmergencyStore } from '@/store/useEmergencyStore';
@@ -24,7 +25,7 @@ export const useSocket = () => {
       return;
     }
 
-    const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:5001';
+    const socketUrl = BACKEND_SOCKET_URL;
     
     if (!socket) {
       socket = io(socketUrl, {

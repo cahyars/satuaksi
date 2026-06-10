@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { useReportStore } from '@/store/useReportStore';
 import { Report } from '@/types';
+import { getBackendAssetUrl } from '@/utils/backend';
 import toast from 'react-hot-toast';
 
 export default function AdminReportsPage() {
@@ -169,7 +170,7 @@ export default function AdminReportsPage() {
                     <div className="flex items-center gap-2">
                       <div className="h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden border border-slate-200">
                         {report.user?.avatar ? (
-                          <img src={report.user.avatar.startsWith('http') ? report.user.avatar : `http://localhost:5001${report.user.avatar}`} alt={report.user.name} className="h-full w-full object-cover" />
+                          <img src={getBackendAssetUrl(report.user.avatar)} alt={report.user.name} className="h-full w-full object-cover" />
                         ) : (
                           <span className="text-xs font-bold text-slate-500">{report.user?.name?.charAt(0) || 'U'}</span>
                         )}
@@ -211,7 +212,7 @@ export default function AdminReportsPage() {
                   <div className="mt-auto space-y-3">
                     {report.imageUrl && (
                       <div className="w-full h-32 rounded-xl overflow-hidden bg-slate-100 relative group-hover:shadow-md transition-all">
-                        <img src={report.imageUrl.startsWith('http') ? report.imageUrl : `http://localhost:5001${report.imageUrl}`} alt="Bukti laporan" className="w-full h-full object-cover" />
+                        <img src={getBackendAssetUrl(report.imageUrl)} alt="Bukti laporan" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                           <span className="text-white text-[10px] font-bold flex items-center gap-1">
                             <Eye className="h-3 w-3" /> LIHAT BUKTI

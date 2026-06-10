@@ -15,6 +15,7 @@ import {
   ToggleRight
 } from 'lucide-react';
 import api from '@/services/api';
+import { getBackendAssetUrl } from '@/utils/backend';
 import toast from 'react-hot-toast';
 
 export default function AdminUsers() {
@@ -153,7 +154,7 @@ export default function AdminUsers() {
                       <div className="flex items-center space-x-3">
                         <div className="h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600">
                           {usr.avatar ? (
-                            <img src={usr.avatar.startsWith('http') ? usr.avatar : `http://localhost:5001${usr.avatar}`} alt="Avatar" className="h-full w-full object-cover rounded-full" />
+                            <img src={getBackendAssetUrl(usr.avatar)} alt="Avatar" className="h-full w-full object-cover rounded-full" />
                           ) : (
                             usr.name.charAt(0)
                           )}

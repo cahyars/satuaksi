@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
+import { getBackendAssetUrl } from '@/utils/backend';
 import { User, Activity, Edit3, Save, Camera } from 'lucide-react';
 
 export default function ProfilePage() {
@@ -22,7 +23,7 @@ export default function ProfilePage() {
             <div className="relative group cursor-pointer mb-4">
               <div className="h-24 w-24 rounded-2xl bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center">
                 {user?.avatar ? (
-                  <img src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5001${user.avatar}`} alt="Profile" className="h-full w-full object-cover" />
+                  <img src={getBackendAssetUrl(user.avatar)} alt="Profile" className="h-full w-full object-cover" />
                 ) : (
                   <User className="h-10 w-10 text-slate-400" />
                 )}

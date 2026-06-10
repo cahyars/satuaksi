@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
+import { getBackendAssetUrl } from '@/utils/backend';
 import { motion } from 'framer-motion';
 import { 
   User, 
@@ -101,7 +102,7 @@ export default function UserSettings() {
             {avatarPreview ? (
               <img src={avatarPreview} alt="Avatar" className="h-full w-full object-cover" />
             ) : user?.avatar ? (
-              <img src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5001${user.avatar}`} alt="Avatar" className="h-full w-full object-cover" />
+              <img src={getBackendAssetUrl(user.avatar)} alt="Avatar" className="h-full w-full object-cover" />
             ) : (
               <User className="h-10 w-10 text-slate-400" />
             )}

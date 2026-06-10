@@ -21,6 +21,7 @@ import {
 import { useAuthStore } from '@/store/useAuthStore';
 import { useNotificationStore } from '@/store/useNotificationStore';
 import { useEmergencyStore } from '@/store/useEmergencyStore';
+import { getBackendAssetUrl } from '@/utils/backend';
 import toast from 'react-hot-toast';
 
 interface SidebarProps {
@@ -67,7 +68,7 @@ export default function Sidebar({ mobileOpen, setMobileOpen }: SidebarProps) {
       <div className="flex items-center space-x-3 p-3 bg-slate-50 border border-slate-200 rounded-xl mb-6">
         <div className="h-10 w-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 font-semibold border border-slate-200">
           {user?.avatar ? (
-            <img src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5001${user.avatar}`} alt={user?.name} className="h-full w-full object-cover rounded-lg" />
+            <img src={getBackendAssetUrl(user.avatar)} alt={user?.name} className="h-full w-full object-cover rounded-lg" />
           ) : (
             user?.name?.charAt(0)
           )}

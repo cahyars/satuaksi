@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { getRealLocation } from '@/utils/gps';
+import { getBackendAssetUrl } from '@/utils/backend';
 
 export default function CommunityReports() {
   const { reports, categories, loading, fetchReports, fetchCategories, createReport, verifyReport, deleteReport } = useReportStore();
@@ -285,7 +286,7 @@ export default function CommunityReports() {
               {/* Evidence image preview */}
               <div className="h-44 bg-slate-100 border-b border-slate-200 relative overflow-hidden flex items-center justify-center">
                 {rep.imageUrl ? (
-                  <img src={`http://localhost:5001${rep.imageUrl}`} alt={rep.title} className="h-full w-full object-cover group-hover:scale-105 transition-all duration-500" />
+                  <img src={getBackendAssetUrl(rep.imageUrl)} alt={rep.title} className="h-full w-full object-cover group-hover:scale-105 transition-all duration-500" />
                 ) : (
                   <MapPin className="h-12 w-12 text-slate-300" />
                 )}
@@ -324,7 +325,7 @@ export default function CommunityReports() {
                   <div className="flex items-center space-x-1.5">
                     <div className="h-5 w-5 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-[8px] font-bold">
                       {rep.user?.avatar ? (
-                        <img src={rep.user.avatar.startsWith('http') ? rep.user.avatar : `http://localhost:5001${rep.user.avatar}`} alt="Avatar" className="h-full w-full object-cover rounded-full" />
+                        <img src={getBackendAssetUrl(rep.user.avatar)} alt="Avatar" className="h-full w-full object-cover rounded-full" />
                       ) : (
                         rep.user?.name?.charAt(0)
                       )}
